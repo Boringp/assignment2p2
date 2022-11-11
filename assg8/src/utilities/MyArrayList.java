@@ -208,8 +208,8 @@ public class MyArrayList<E> implements ListADT<E> {
 	@Override
 	public boolean contains(E toFind) throws NullPointerException {
 		boolean find=false;
-		for(int i = 0;i<size+1;i++) {
-			 if (myArrayList[i]==toFind) {
+		for(int i = 0;i<size;i++) {
+			 if (myArrayList[i].equals(toFind)) {
 				 find=true;
 			 } 
 		 }

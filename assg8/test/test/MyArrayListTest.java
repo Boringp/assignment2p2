@@ -214,7 +214,14 @@ class MyArrayListTest {
 
 	@Test
 	void testIterator() {
-	
+		myList.add("ab");
+		myList.add("cd");
+		Iterator<String> it=myList.iterator();
+		assertTrue(it.hasNext());
+		assertEquals("ab",it.next());
+		assertTrue(it.hasNext());
+		assertEquals("cd",it.next());
+		assertFalse(it.hasNext());
 	}
 
 }

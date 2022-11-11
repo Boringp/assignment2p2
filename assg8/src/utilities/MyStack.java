@@ -1,10 +1,13 @@
 package utilities;
 
 import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
 
-public class myStack<E> implements StackADT<E> {
+import utilities.MyArrayList.myIterator;
+
+public class MyStack<E> implements StackADT<E> {
 	private MyArrayList<E> stack;
-	public myStack () {
+	public MyStack () {
 		stack=new MyArrayList();
 		  
 	   }
@@ -74,9 +77,10 @@ public class myStack<E> implements StackADT<E> {
 	@Override
 	public Iterator<E> iterator() {
 		// TODO Auto-generated method stub
-		return null;
+		return stack.iterator();
 	}
-
+	
+	
 	@Override
 	public boolean equals(StackADT<E> that) {
 		// TODO Auto-generated method stub

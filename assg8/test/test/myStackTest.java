@@ -6,11 +6,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import utilities.Iterator;
 import utilities.MyArrayList;
-import utilities.myStack;
+import utilities.MyStack;
 
 class myStackTest {
-	 myStack<String> s=new myStack<> () ;
+	 MyStack<String> s=new MyStack<> () ;
 	@BeforeEach
 	void setUp() throws Exception {
 		 
@@ -79,7 +80,8 @@ class myStackTest {
 	@Test
 	void testContains() {
 		s.push("a");
-		assertTrue(s.contains("a"));
+		String ab="a";
+		assertTrue(s.contains(ab));
 		assertFalse(s.contains("b"));;
 	}
 
@@ -95,14 +97,21 @@ class myStackTest {
 
 	@Test
 	void testIterator() {
-		fail("Not yet implemented");
+		s.push("ab");
+		s.push("cd");
+		Iterator<String> it=s.iterator();
+		assertTrue(it.hasNext());
+		assertEquals("ab",it.next());
+		assertTrue(it.hasNext());
+		assertEquals("cd",it.next());
+		assertFalse(it.hasNext());
 	}
 
 	@Test
 	void testEqualsStackADTOfE() {
 		s.push("a");
 		s.push("b");
-		myStack<String> e=new myStack<> () ;
+		MyStack<String> e=new MyStack<> () ;
 		e.push("a");
 		e.push("b");
 		assertTrue(s.equals(e));

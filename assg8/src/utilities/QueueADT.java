@@ -1,6 +1,5 @@
 package utilities;
 
-import exceptions.EmptyQueueException;
 import java.io.*;
 
 /**
