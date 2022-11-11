@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+import utilities.Iterator;
+import utilities.MyArrayList;
 import utilities.MyQueue;
 import utilities.MyStack;
 
@@ -20,6 +22,7 @@ public static void main(String[] args) {
     MyQueue<String> position2=new MyQueue();
     MyQueue<String> position3=new MyQueue();
     StringBuilder str = new StringBuilder();
+    MyArrayList<String> errorPosition = new MyArrayList<>();
     int i;
     int line,column;
     	 
@@ -34,10 +37,12 @@ public static void main(String[] args) {
 		    		line++;
 		    		column=0;
 		    	}
+		    	else if(i==9) {
+		    		column=column+4;
+		    	}
 		    	else {
 		    		column++;
 		    	}
-		    	
 		    	if((char)i=='<') {
 		    		str = new StringBuilder();
 		    	}
@@ -65,12 +70,14 @@ public static void main(String[] args) {
 		    			
 		    		}
 		    		else if(str.charAt(0)=='/') {
-		    			
+		    			String ab =str.toString().trim().substring(1);
 		    			if(str.toString().trim().substring(1).equals(stack.peek() )) {
 		    				stack.pop();
 		    				position1.pop();
 		    			}
 		    			else if((!errorQ.isEmpty()) && str.toString().trim().substring(1).equals(errorQ.peek()) ) {
+		    				errorPosition.add(position2.peek());
+    						
 		    				errorQ.dequeue();
 		    				position2.dequeue();
 		    			}
@@ -79,13 +86,13 @@ public static void main(String[] args) {
 		    				position2.enqueue(line+","+column);
 		    			}
 		    			else {
-		    				String ab =str.toString().trim().substring(1);
+		    				
 		    				boolean t2=stack.contains(ab);
 		    				if(t2) {
 		    					while(!stack.peek().equals(ab)){
 		    						errorQ.enqueue(stack.pop());
-		    						
 		    						position2.enqueue(position1.pop());
+		    						
 		    					}
 		    					stack.pop();
 		    					position1.pop();
@@ -121,21 +128,21 @@ public static void main(String[] args) {
 		if(  errorQ.isEmpty()||extrasQ.isEmpty()  ) {
 			if(errorQ.isEmpty()) {
 				
-				System.out.println(extrasQ.dequeue());
-				System.out.println(position3.dequeue());
+				extrasQ.dequeue();
+				errorPosition.add(position3.dequeue());
 			}
 			else {
 				
-				System.out.println(errorQ.dequeue());
-				System.out.println(position2.dequeue());
+				errorQ.dequeue();
+				errorPosition.add(position2.dequeue());
 			}
 		}
 		if((!errorQ.isEmpty()) && (!extrasQ.isEmpty())) {
 			boolean eq=errorQ.peek().split(" ")[0].equals(extrasQ.peek().substring(1));
 			if(eq==false) {
 			
-				System.out.println(errorQ.dequeue());
-				System.out.println(position2.dequeue());
+				errorQ.dequeue();
+				errorPosition.add(position2.dequeue());
 			}
 			else {
 				
@@ -144,7 +151,11 @@ public static void main(String[] args) {
 			}
 		}
        }
-    
+       Iterator<String> ep = errorPosition.iterator();
+       while(ep.hasNext()) {
+    	   String a=ep.next();
+    	   System.out.printf("Error exists in Line %s , Column %s %n",a.split(",")[0],a.split(",")[1]);
+       }
 }
     
     
