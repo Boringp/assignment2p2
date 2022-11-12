@@ -10,7 +10,7 @@ import utilities.Iterator;
 import utilities.MyArrayList;
 import utilities.MyStack;
 
-class myStackTest {
+class MyStackTest {
 	 MyStack<String> s=new MyStack<> () ;
 	@BeforeEach
 	void setUp() throws Exception {

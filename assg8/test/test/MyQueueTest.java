@@ -84,7 +84,10 @@ class MyQueueTest {
 
 	@Test
 	void testToArrayEArray() {
-		fail("Not yet implemented");
+		q.enqueue("a");
+		q.enqueue("b");
+		String[] expected = {"b","a"};
+		assertArrayEquals(expected, q.toArray(new String[1]));
 	}
 
 	@Test

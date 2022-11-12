@@ -83,10 +83,21 @@ public class MyStack<E> implements StackADT<E> {
 	
 	@Override
 	public boolean equals(StackADT<E> that) {
-		// TODO Auto-generated method stub
-		
-		
-			return this.toArray().equals(that.toArray());
+		boolean eq  = true;
+		if(this.size()!= that.size()) {
+			eq  = false;
+		}
+		else {
+			Iterator<E> i1 = this.iterator();
+			Iterator<E> i2 = that.iterator();
+			while(i1.hasNext()) {
+				if(i1.next()!=i2.next()) {
+					eq  = false;
+					break;
+				}
+			}
+		}
+		return eq;
 			
 		
 	}

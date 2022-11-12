@@ -217,16 +217,16 @@ public class MyArrayList<E> implements ListADT<E> {
 	}
 
 	@Override
-	public E[] toArray(E[] toHold) throws NullPointerException {
-	
+	public  E[] toArray(E[] toHold) throws NullPointerException {
+		
 		if(toHold.length>=this.size()) {
-			toHold=(E[]) new Object[toHold.length];
+			toHold= (E[]) Array.newInstance(toHold.getClass().getComponentType(), this.size());
 			for(int i = 0;i<this.size;i++) {
 				toHold[i]=myArrayList[i];
 			}
 		}else
 		{
-			toHold=(E[]) new Object[this.size()];
+			toHold= (E[]) Array.newInstance(toHold.getClass().getComponentType(), this.size()); 
 			for(int i = 0;i<this.size;i++) {
 				toHold[i]=myArrayList[i];
 		

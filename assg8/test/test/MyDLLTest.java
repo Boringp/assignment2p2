@@ -8,14 +8,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import utilities.Iterator;
-import utilities.myDLL;
+import utilities.MyDLL;
 
-class myDLLTest {
+class MyDLLTest {
 
-	private myDLL<String> dll;
+	private MyDLL<String> dll;
 	@BeforeEach
 	void setUp() throws Exception {
-		 dll= new myDLL<String>();
+		 dll= new MyDLL<String>();
 	}
 
 	@AfterEach
@@ -61,7 +61,7 @@ class myDLLTest {
 	void testAddAll() {
 		dll.add("a");
 		dll.add("b");
-		myDLL<String>	 dll2= new myDLL<String>();
+		MyDLL<String>	 dll2= new MyDLL<String>();
 		dll2.add("c");
 		dll2.add("d");
 		dll.addAll(dll2);
@@ -119,7 +119,10 @@ class myDLLTest {
 
 	@Test
 	void testToArrayEArray() {
-		fail("Not yet implemented");
+		dll.add("ab");
+		dll.add("cd");
+		String[] expected = {"ab","cd"};
+		assertArrayEquals(expected, dll.toArray(new String[0]));
 	}
 
 	@Test

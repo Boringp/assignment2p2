@@ -1,10 +1,10 @@
 package utilities;
 
 public class MyQueue<E> implements QueueADT<E> {
-	private myDLL<E> queue;
+	private MyDLL<E> queue;
 	
 	public MyQueue () {
-		queue=new myDLL();
+		queue=new MyDLL();
 		  
 	   }
 	@Override
@@ -28,7 +28,7 @@ public class MyQueue<E> implements QueueADT<E> {
 
 	@Override
 	public void dequeueAll() {
-		queue=new myDLL();
+		queue=new MyDLL();
 		
 	}
 

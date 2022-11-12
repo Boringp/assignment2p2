@@ -1,14 +1,15 @@
 package utilities;
 
+import java.lang.reflect.Array;
 import java.util.NoSuchElementException;
 
 import utilities.MyArrayList.myIterator;
 
-public class myDLL<E> implements ListADT<E>{
+public class MyDLL<E> implements ListADT<E>{
 
 	private DLLNode<E> head, tail;
 	
-	public myDLL() {
+	public MyDLL() {
 			// Construct an empty DLL.
 		this.head=new DLLNode();
 		this.tail=new DLLNode(); 
@@ -171,8 +172,21 @@ public class myDLL<E> implements ListADT<E>{
 
 	@Override
 	public E[] toArray(E[] toHold) throws NullPointerException {
-		// TODO Auto-generated method stub
-		return null;
+		if(toHold.length>=this.size()) {
+			toHold= (E[]) Array.newInstance(toHold.getClass().getComponentType(), this.size());
+			for(int i = 0;i<this.size();i++) {
+				toHold[i]=this.get(i+1);
+			}
+		}else
+		{
+			toHold= (E[]) Array.newInstance(toHold.getClass().getComponentType(), this.size()); 
+			for(int i = 0;i<this.size();i++) {
+				toHold[i]=this.get(i+1);
+		
+			
+		}
+	}
+		return toHold;
 	}
 
 	@Override

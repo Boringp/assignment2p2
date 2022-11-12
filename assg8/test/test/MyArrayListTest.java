@@ -187,19 +187,10 @@ class MyArrayListTest {
 		myList.add("cd");
 		myList.add("ef");
 		myList.add("ef");
-		myList.add("ef");
-		myList.add("ef");
-		myList.add("ef");
-		myList.add("ef");
-		myList.add("ef");
-		myList.add("ef");
-		myList.add("fh");
-		String[] toHold=new String[10] ;
-		
-		assertArrayEquals(myList.toArray(),myList.toArray(toHold));
-		for(String  i :toHold) {
-			System.out.print(i);
-		}
+		String[] expected = {"ab","cd","ef","ef"};
+		String[] toHold=new String[0] ;
+		assertArrayEquals(expected,myList.toArray(toHold));
+	
 	}
 
 	@Test
