@@ -62,7 +62,7 @@ class MyStackTest {
 		s.push("ef");
 		s.push("ef");
 		String[] expected = {"ab","cd","ef","ef"};
-		assertArrayEquals(s.toArray(),expected);
+		assertArrayEquals(expected,s.toArray());
 	}
 
 	@Test
@@ -72,9 +72,9 @@ class MyStackTest {
 		s.push("ef");
 		s.push("ef");
 		String[] expected = {"ab","cd","ef","ef"};
-		String[] toHold = null;
 		
-		assertArrayEquals(s.toArray(toHold),expected);
+		
+		assertArrayEquals(expected,s.toArray(new String[1]));
 	}
 
 	@Test
@@ -91,8 +91,8 @@ class MyStackTest {
 		s.push("b");
 		s.push("c");
 		s.push("d");
-		assertEquals( s.search("a"), 3);
-		assertEquals( s.search("f"), -1);
+		assertEquals(  3,s.search("a"));
+		assertEquals( -1,s.search("f"));
 	}
 
 	@Test
@@ -125,7 +125,7 @@ class MyStackTest {
 		s.push("cd");
 		s.push("ef");
 		s.push("ef");
-		assertEquals( s.size(), 4);
+		assertEquals( 4,s.size());
 	}
 
 }
